@@ -55,8 +55,37 @@ function procesar_formulario($form_entrada){
     return $respuesta;
 }
 
+function procesar_select($form_entrada){
+    //Creo el xajaxResponse para generar una salida
+    $respuesta = new xajaxResponse('ISO-8859-1');
+
+    $array1 = array("A1", "A2", "A3");
+    $array2 = array("B1", "B2", "B3");
+    $array3 = array("C1", "C2", "C3");
+
+
+    if($form_entrada["provincia"] == "a"){
+        $arraySelect = array($array1[0], $array1[1], $array1[2]);
+    }
+    elseif($form_entrada["provincia"] == "b"){
+        $arraySelect = array($array2[0], $array2[1], $array2[2]);
+    }
+    elseif($form_entrada["provincia"] == "c"){
+        $arraySelect = array($array3[0], $array3[1], $array3[2]);
+    }
+
+    $respuesta->addAssign("select","innerHTML","Selecciona tu pueblo<select name='pueblos'>
+                                                    <option>$arraySelect[0]</option>
+                                                    <option>$arraySelect[1]</option>
+                                                    <option>$arraySelect[2]</option>
+                                                    </select>");
+
+    return $respuesta;
+}
+
 //Asociamos la funcion creada antoriormente al objeto xajax
 $xajax->registerFunction("procesar_formulario");
+$xajax->registerFunction("procesar_select");
 //El objeto xajax tiene que procesar cualquier peticion
 $xajax->processRequests();
 ?>
