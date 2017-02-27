@@ -95,7 +95,7 @@ $xajax->processRequests();
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>XAJAX Validación</title>
+    <title>XAJAX Select</title>
     <?php $xajax->printJavascript("xajax/"); ?>
     <style>
         input {
